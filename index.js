@@ -6,6 +6,16 @@ const Book = require('./Book');
 
 const app = express();
 
+
+// Set up a proxy for requests to the backend server
+app.use(
+  '/api',
+  createProxyMiddleware({
+    target: 'https://backendbook-blue.vercel.app',
+    changeOrigin: true,
+  })
+);
+
 // Middleware
 app.use(bodyParser.json());
 
