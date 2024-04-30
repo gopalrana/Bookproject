@@ -14,11 +14,6 @@ mongoose.connect('mongodb+srv://rajputgopal321:TyASdV1OZWUbj859@deploy.hgq5wmp.m
   .then(() => console.log('MongoDB connected'))
   .catch(err => console.log(err));
 
-
-app.get('/', (req, res) => {
-  res.send('Hello, World!');
-});
-
 // Routes
 // GET all books
 app.get('/api/books', async (req, res) => {
@@ -68,16 +63,4 @@ app.delete('/api/books/:id', async (req, res) => {
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => console.log(`Server started on port ${PORT}`));
-
-
-
-
-
-
-
-
-
-
-
-
 
