@@ -6,7 +6,13 @@ const Book = require('./Book');
 
 const app = express();
 
-
+app.use(cors(
+    {
+        origin: ["https://backendbook-blue.vercel.app"],
+        methods: ["POST", "GET"],
+        credentials: true
+    }
+));
 
 
 // Middleware
