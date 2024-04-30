@@ -14,6 +14,11 @@ mongoose.connect('mongodb+srv://rajputgopal321:TyASdV1OZWUbj859@deploy.hgq5wmp.m
   .then(() => console.log('MongoDB connected'))
   .catch(err => console.log(err));
 
+
+app.get('/', (req, res) => {
+  res.send('Hello, World!');
+});
+
 // Routes
 // GET all books
 app.get('/api/books', async (req, res) => {
