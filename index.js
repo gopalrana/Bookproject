@@ -71,6 +71,20 @@ app.delete('/api/books/:id', async (req, res) => {
 });
 
 
+
+// DELETE a book
+app.delete('/api/new_books/:id', async (req, res) => {
+  try {
+    await Book.findByIdAndDelete(req.params.id);
+    res.json({ message: 'Book deleted' });
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ message: 'Server Error' });
+  }
+});
+
+
+
 // heeello
 
 const PORT = process.env.PORT || 3000;
