@@ -73,10 +73,25 @@ app.delete('/api/books/:id', async (req, res) => {
 
 
 // DELETE a book
-app.delete('/api/new_books/:id', async (req, res) => {
+app.delete('/api/newaddedbooks/:id', async (req, res) => {
   try {
     await Book.findByIdAndDelete(req.params.id);
     res.json({ message: 'Book deleted' });
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ message: 'Server Error' });
+  }
+});
+
+
+
+// POST a new book
+app.post('/api/books', async (req, res) => {
+  try {
+    const { title, author, genre } = req.body;
+    const newBook = new Book({ title, author, genre });
+    const savedBook = await newBook.save();
+    res.status(201).json(savedBook);
   } catch (err) {
     console.error(err);
     res.status(500).json({ message: 'Server Error' });
